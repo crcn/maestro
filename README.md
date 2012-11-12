@@ -105,6 +105,18 @@ reboots the server
 counts the number of physical connections to the server
 
 
+## Perfomer Client API
+
+### maestro.addServer(options, callback);
+
+adds a server to maestro
+
+  - `options` - options needed for adding the server
+    - `secret` - the secret key used to add the server
+    
+
+
+
 
 
       
