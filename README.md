@@ -100,9 +100,9 @@ starts up the server
 
 reboots the server
 
-### server.countConnections(callback)
+### server.numConnections
 
-counts the number of physical connections to the server
+the number of physical connections to the server
 
 
 ## Perfomer Client API
@@ -113,6 +113,15 @@ adds a server to maestro
 
   - `options` - options needed for adding the server
     - `secret` - the secret key used to add the server
+    - `info` - the information about the server including the name
+      - `name` 
+      - `status`
+
+### maestro.updateServer(query, update, onUpdate)
+
+Updates maestro on the server status
+
+
     
 
 
