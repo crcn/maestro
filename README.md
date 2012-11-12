@@ -55,7 +55,30 @@ auto-scales group of servers
     - `max` - max number of servers to auto scale
     - `algo` - type of algorithm: machine learning is defualt
 
-### Server (Performer) API
+### group.watch(query, listeners);
+
+Watches for any changes that might occur with any servers
+
+```javascript
+
+group.watch({ name: "mongodb"}, {
+  "shutdown": function() {
+    //handle on shutdown
+  },
+  "destroy": function() {
+  },
+  "startup": function() {
+  },
+  "reboot": function() {
+  },
+  "statusChange": function(event) {
+    console.log(event.status); { "connections": 0 }
+    console.log(event.server);
+  }
+});
+```
+
+## Server (Performer) API
 
 ### server.getStatus(callback)
 
@@ -76,6 +99,11 @@ starts up the server
 ### server.reboot(callback)
 
 reboots the server
+
+### server.countConnections(callback)
+
+counts the number of physical connections to the server
+
 
 
 
