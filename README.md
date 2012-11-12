@@ -4,15 +4,16 @@ Maestro is a cloud management tool with a mongodb-like feel
 
 ### maestro(options)
 
-### maestro.group()
 
-Defines a group of servers
+### maestro.group(name, query)
+
+Defines a group of servers based on a search query
 
 ```javascript
-var rabbitGroup = maestro.group("rabbitmq");
+var rabbitGroup = maestro.group("rabbitmq", {"name":"rabbitmq"});
 ```
 
-### group.getServer(query, options, callback);
+### maestro.getServer(query, options, callback);
 
 Finds a server.
 
@@ -27,7 +28,7 @@ maestro.getServer({ name: "windows-7", host: "ec2-east" }, { ping: reqIp }, func
 });
 ```
 
-### group.runCommand(query, command, options, callback);
+### maestro.runCommand(query, command, options, callback);
 
 runs a command against the given servers
 
@@ -37,7 +38,7 @@ runs a command against the given servers
     - `limit` - max number of servers to invoke against
 
 ```javascript
-group.runCommand({ createdAt: Date.now() }, { "shutdown": 1 });
+maestro.runCommand({ createdAt: Date.now() }, { "shutdown": 1 });
 ```
 
 ### group.algorithm(type)
@@ -46,6 +47,13 @@ group.runCommand({ createdAt: Date.now() }, { "shutdown": 1 });
     - `roundRobin` -
     - `leastConn` - grab the server that's least busy (default)
 
+### group.autoScale(options)
+
+auto-scales group of servers
+
+  - `options`
+    - `max` - max number of servers to auto scale
+    - `algo` - type of algorithm: machine learning is defualt
 
 ### Server (Performer) API
 
