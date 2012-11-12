@@ -21,8 +21,9 @@ var maestro = require("maestro").connect({
   }
 });
 
-//shutdown any rabbitmq servers idling for at least 10 minutes
-maestro.getServers({ group: "rabbitmq", "status.cpu": { $lt: 3 }}).watch().delay(1000 * 60 * 10).shutdown();
+//shutdown any rabbitmq servers idling for at least 10 minutes. Make sure not to invoke the command if the number
+//of live servers is less than 3.
+maestro.getServers({ group: "rabbitmq", "status.cpu": { $lt: 3 }}).watch().delay(1000 * 60 * 10).min(3).shutdown();
 
 
 ```
