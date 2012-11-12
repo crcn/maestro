@@ -55,7 +55,7 @@ auto-scales group of servers
     - `max` - max number of servers to auto scale
     - `algo` - type of algorithm: machine learning is defualt
 
-### group.watch(query, listeners);
+### group.watch(query, listeners, delay);
 
 Watches for any changes that might occur with any servers
 
@@ -76,11 +76,12 @@ group.watch({ name: "mongodb", "status.cpu": { $gt:60 } }, {
   }
 });
 
+//shutdown a server if it's been idle for more than 10 minutes
 group.watch({ name: "mongodb", "status.cpu": { $lt: 10 }}, {
   "statusChange": function(server) {
     server.shutdown();
   }
-});
+}, 1000 * 60 * 10);
 ```
 
 
