@@ -61,7 +61,7 @@ Watches for any changes that might occur with any servers
 
 ```javascript
 
-group.watch({ name: "mongodb"}, {
+group.watch({ name: "mongodb", "status.cpu": { $gt:60 } }, {
   "shutdown": function() {
     //handle on shutdown
   },
@@ -72,8 +72,13 @@ group.watch({ name: "mongodb"}, {
   "reboot": function() {
   },
   "statusChange": function(event) {
-    console.log(event.status); { "connections": 0 }
-    console.log(event.server);
+    group.createServer();
+  }
+});
+
+group.watch({ name: "mongodb", "status.cpu": { $lt: 10 }}, {
+  "statusChange": function(server) {
+    server.shutdown();
   }
 });
 ```
