@@ -12,7 +12,7 @@ Defines a group of servers
 var rabbitGroup = maestro.group("rabbitmq");
 ```
 
-### group.getServer(query, options, callback)
+### group.getServer(query, options, callback);
 
 Finds a server.
 
@@ -39,6 +39,13 @@ runs a command against the given servers
 ```javascript
 group.runCommand({ createdAt: Date.now() }, { "shutdown": 1 });
 ```
+
+### group.algorithm(type)
+
+  - `type` - type of algorithm when selecting servers
+    - `roundRobin` -
+    - `leastConn` - grab the server that's least busy (default)
+
 
 ### Server (Performer) API
 
