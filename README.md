@@ -1,5 +1,32 @@
 Maestro is a cloud management tool with a mongodb-like feel
 
+
+### Example
+
+```javascript
+
+var maestro = require("maestro").connect({
+  ec2: {
+    "accessKeyId": "XXXX",
+    "secretAccessKey": "XXXX"
+  },
+  rackspace: {
+    //TODO
+  },
+  gogrid: {
+    //TODO
+  },
+  joyent: {
+    //TODO
+  }
+});
+
+//shutdown any rabbitmq servers idling for at least 10 minutes
+maestro.getServers({ group: "rabbitmq", "status.cpu": { $lt: 3 }}).watch().delay(1000 * 60 * 10).shutdown();
+
+
+```
+
 ## Maestro API
 
 ### maestro(options)
