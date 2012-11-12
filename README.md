@@ -4,6 +4,14 @@ Maestro is a cloud management tool with a mongodb-like feel
 
 ### maestro(options)
 
+```javascript
+var maestro = require("maestro").connect({
+  groups: {
+    "rabbitmq": {"group": "rabbitmq"}
+  }
+});
+```
+
 
 ### maestro.group(name, query)
 

@@ -1,0 +1,16 @@
+{
+  "name": "maestro",
+  "version": "0.0.0",
+  "description": "Maestro is a cloud management tool with a mongodb-like feel",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "nn"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
