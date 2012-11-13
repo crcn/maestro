@@ -13,11 +13,15 @@ var outcome = require("outcome");
 var maestro = require("../"),
 config = require(argv.c.replace("~", process.env.HOME));
 
-config.script = argv.s;
 
 if(argv.t == "server") {
-	maestro(config, outcome.success(function(){}));
-} else
-if(argv.t == "client") {
-	maestro.client(config, outcome.success(function(){}));
+	var loader = maestro(config);
+
+} else {
+	var loader = maestro.client(config);
 }
+
+
+if(argv.s) loader.require(argv.s);
+
+loader.load(outcome.success(function(){}));
