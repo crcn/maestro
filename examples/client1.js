@@ -1,4 +1,4 @@
-require("../")(require("/usr/local/etc/maestro/config"), function(err, maestro) {
+require("../").client(require("/usr/local/etc/maestro/config"), function(err, client) {
 	if(err) console.error(err.stack);
 	maestro.sync();
 

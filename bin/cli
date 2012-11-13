@@ -1,28 +1,17 @@
 #!/usr/bin/env node
+var argv = require("optimist").
+usage("Usage: $0 -t [type] -c [config]").
+demand(["t"]).
+default("c", "~/.maestro/config.json").
+argv;
 
-console.log("not implemented yet");
-process.exit();
 
-var tryPaths = ["~/.maestro/config", "/usr/local/etc/maestro/config"],
-config,
-celeri = require("celeri");
+var maestro = require("../"),
+config = require(argv.c.replace("~", process.env.HOME));
 
-for(var i = tryPaths.length; i--;) {
-	try {
-		config = require(tryPaths[i].replace("~", process.env.HOME));
-		break;
-	} catch(e) {
-
-	}
+if(argv.t == "server") {
+	maestro(config, function(){});
+} else
+if(argv.t == "client") {
+	maestro.client(config, function(){ });
 }
-
-require("../").create(config, function(err, maestro) {
-	if(err) {
-		console.error(err.stack);
-		process.exit();
-	}
-	celeri.onJs(maestro);	
-});
-
-celeri.open();
-
