@@ -23,19 +23,19 @@ var maestro = require("maestro").connect({
 
 //shutdown any rabbitmq servers idling for at least 10 minutes. Make sure not to invoke the command if the number
 //of live servers is less than 3.
-maestro..getServers({ group: "rabbitmq", "status.cpu": { $lt: 3 }}).watch().delay(1000 * 60 * 10).min(3).shutdown();
+maestro.getZones({ service: "ec2" }).getServers({ group: "rabbitmq", "status.cpu": { $lt: 3 }}).watch().delay(1000 * 60 * 10).min(3).shutdown();
 
 
 //shutdown any vnc servers with 0 connections after 1 minute. Make sure there are at least 10 servers
-maestro.getServers({ group: "vnc", "connections": 0 }).watch().delay(1000 * 60).min(10).shutdown();
+maestro.getZones({ service: "ec2" }).getServers({ group: "vnc", "connections": 0 }).watch().delay(1000 * 60).min(10).shutdown();
 
 
-maestro.getServers({ group: "rabbitmq", "status.cpu": {$gt: 70 }}).watch().trigger(function() {
+maestro.getZones({ service: "ec2" }).getServers({ group: "rabbitmq", "status.cpu": {$gt: 70 }}).watch().trigger(function() {
     maestro.getServers({ group: "rabbitmq", "state": "off" }).max(5).startup();
 });
 
 
-maestro.getServer({ group: "rabbitmq", "status.cpu": {$lt: 70}}).exec(function(err, server) {
+maestro.getZones({ service: "ec2" }).getServer({ group: "rabbitmq", "status.cpu": {$lt: 70}}).exec(function(err, server) {
   if(!server) return maestro.createServer("rabbitmq", callback);
 });
 

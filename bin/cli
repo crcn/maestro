@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 
+console.log("not implemented yet");
+process.exit();
+
 var tryPaths = ["~/.maestro/config", "/usr/local/etc/maestro/config"],
 config,
 celeri = require("celeri");
 
 for(var i = tryPaths.length; i--;) {
 	try {
-		config = require(tryPaths.replace("~", process.env.HOME));
+		config = require(tryPaths[i].replace("~", process.env.HOME));
 		break;
 	} catch(e) {
 
@@ -14,6 +17,12 @@ for(var i = tryPaths.length; i--;) {
 }
 
 require("../").create(config, function(err, maestro) {
+	if(err) {
+		console.error(err.stack);
+		process.exit();
+	}
 	celeri.onJs(maestro);	
 });
+
+celeri.open();
 
