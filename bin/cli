@@ -8,17 +8,15 @@ describe("t", "type of server").
 describe("c", "config path").
 argv;
 
-var outcome = require("outcome");
-
-var maestro = require("../"),
-config = require(argv.c.replace("~", process.env.HOME));
-
+var outcome = require("outcome"),
+maestro = require("../"),
+loader;
 
 if(argv.t == "server") {
-	var loader = maestro(config);
+	loader = maestro(argv.c);
 
 } else {
-	var loader = maestro.client(config);
+	loader = maestro.client(argv.c);
 }
 
 
