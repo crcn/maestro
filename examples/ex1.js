@@ -1,9 +1,13 @@
 require("../").create(require("/usr/local/etc/maestro/config"), function(err, maestro) {
 	if(err) console.error(err.stack);
-	maestro.getAllServers().exec();
 	maestro.sync();
 
-	maestro.getServers({ connection: 1 }).doesntExist(function() {
-		console.log("MAKE NEW")
+	maestro.getServers({ numConnections: 1 }).doesntExist(function() {
+
 	}).exec();
+
+
+	maestro.getServer({ numConnections: 0 }).exec(function(err, server) {
+		console.log(server);
+	})
 });
