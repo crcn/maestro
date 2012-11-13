@@ -30,6 +30,11 @@ maestro.getServers({ group: "rabbitmq", "status.cpu": { $lt: 3 }}).watch().delay
 maestro.getServers({ group: "vnc", "connections": 0 }).watch().delay(1000 * 60).min(10).shutdown();
 
 
+maestro.getServers({ group: "rabbitmq", "status.cpu": {$gt: 70 }}).watch().trigger(function() {
+    maestro.getServers({ group: "rabbitmq", "state": "off" }).max(5).startup();
+});
+
+
 ```
 
 ## Maestro API
