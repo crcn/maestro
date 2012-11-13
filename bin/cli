@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+var tryPaths = ["~/.maestro/config", "/usr/local/etc/maestro/config"],
+config,
+celeri = require("celeri");
+
+for(var i = tryPaths.length; i--;) {
+	try {
+		config = require(tryPaths.replace("~", process.env.HOME));
+		break;
+	} catch(e) {
+
+	}
+}
+
+require("../").create(config, function(err, maestro) {
+	celeri.onJs(maestro);	
+});
+
