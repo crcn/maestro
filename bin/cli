@@ -1,17 +1,23 @@
 #!/usr/bin/env node
 var argv = require("optimist").
-usage("Usage: $0 -t [type] -c [config]").
+usage("Usage: $0 -t [type] -c [config] -s [maestro script]").
 demand(["t"]).
 default("c", "~/.maestro/config.json").
+describe("s", "script to run with maestro").
+describe("t", "type of server").
+describe("c", "config path").
 argv;
 
+var outcome = require("outcome");
 
 var maestro = require("../"),
 config = require(argv.c.replace("~", process.env.HOME));
 
+config.script = argv.s;
+
 if(argv.t == "server") {
-	maestro(config, function(){});
+	maestro(config, outcome.success(function(){}));
 } else
 if(argv.t == "client") {
-	maestro.client(config, function(){ });
+	maestro.client(config, outcome.success(function(){}));
 }
