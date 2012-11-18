@@ -1,42 +1,43 @@
 {
-    "name": "maestro",
-    "version": "0.0.1",
-    "description": "Maestro is a cloud management tool with a mongodb-like feel",
-    "main": "./lib/index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "http://github.com/crcn/maestro"
-    },
-    "bin": {
-        "maestro": "./bin/cli"
-    },
-    "author": "",
-    "license": "BSD",
-    "readmeFilename": "README.md",
-    "dependencies": {
-        "async": "0.1.x",
-        "outcome": "0.0.x",
-        "sift": "0.0.x",
-        "sprintf": "0.1.x",
-        "step": "0.0.x",
-        "structr": "0.2.x",
-        "traverse": "0.6.x",
-        "underscore": "1.4.x",
-        "aws-lib": "0.1.x",
-        "fiddle": "*",
-        "optimist": "0.3.x",
-        "plugin": "0.2.x",
-        "structr-step": "0.0.x",
-        "winston": "0.6.x",
-        "dnode": "1.0.x",
-        "express": "3.0.x",
-        "mongodblite": "0.0.x",
-        "mongoose": "3.4.x",
-        "seq": "0.3.x",
-        "request": "2.12.x",
-        "celeri": "0.3.x"
-    }
+  "name": "maestro",
+  "version": "0.0.2",
+  "description": "Maestro is a cloud management tool with a mongodb-like feel",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/crcn/maestro"
+  },
+  "bin": {
+    "maestro": "./bin/cli"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "async": "0.1.x",
+    "outcome": "0.0.x",
+    "sift": "0.0.x",
+    "sprintf": "0.1.x",
+    "step": "0.0.x",
+    "structr": "0.2.x",
+    "traverse": "0.6.x",
+    "underscore": "1.4.x",
+    "aws-lib": "0.1.x",
+    "fiddle": "*",
+    "optimist": "0.3.x",
+    "plugin": "0.2.x",
+    "structr-step": "0.0.x",
+    "winston": "0.6.x",
+    "dnode": "1.0.x",
+    "express": "3.0.x",
+    "mongodblite": "0.0.x",
+    "mongoose": "3.4.x",
+    "seq": "0.3.x",
+    "request": "2.12.x",
+    "celeri": "0.3.x",
+    "dref": "0.0.x"
+  }
 }
