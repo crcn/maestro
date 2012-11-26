@@ -38,6 +38,11 @@
     "seq": "0.3.x",
     "request": "2.12.x",
     "celeri": "0.3.x",
-    "dref": "0.0.x"
+    "dref": "0.0.x",
+    "link": "0.1.x",
+    "sudo": "1.0.x",
+    "npm": "1.1.x",
+    "plugin-express": "0.0.x",
+    "plugin-mongodb": "0.0.x"
   }
 }
