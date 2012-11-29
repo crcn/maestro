@@ -1,6 +1,6 @@
 {
   "name": "maestro",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Maestro is a cloud management tool with a mongodb-like feel",
   "main": "./lib/index.js",
   "scripts": {
