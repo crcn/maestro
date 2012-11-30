@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 var argv = require("optimist").
 usage("Usage: $0 -t [type] -c [config] -s [maestro script]").
 demand(["t"]).
@@ -12,14 +13,22 @@ var outcome = require("outcome"),
 maestro = require("../"),
 loader;
 
-if(argv.t == "server") {
-	loader = maestro(argv.c);
 
-} else {
-	loader = maestro.client(argv.c);
+function getConfig(options) {
+	if(!options) options = process.env.ProgramData ? [process.env.ProgramData, "\\maestro\\config"].join("") : "~/.maestro/config";
+	return typeof options == "object" ? options : require(options.replace("~", process.env.HOME));
 }
 
+var c = getConfig(argv.c);
+c.type = argv.t;
+
+if(argv.t == "server") {
+	loader = maestro.server(c);
+} else {
+	loader = maestro.client(c);
+}
 
 if(argv.s) loader.require(argv.s);
 
-loader.load(outcome.success(function(){}));
+
+loader.load();
