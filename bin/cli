@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
+var celeri = require("celeri");
+
 var argv = require("optimist").
 usage("Usage: $0 -t [type] -c [config] -s [maestro script]").
 demand(["t"]).
-default("c", "~/.maestro/config.json").
+default("c", process.env.ProgramData ? [process.env.ProgramData, "\\maestro\\config"].join("") : "~/.maestro/config").
 describe("s", "script to run with maestro").
 describe("t", "type of server").
 describe("c", "config path").
@@ -13,14 +15,13 @@ var outcome = require("outcome"),
 maestro = require("../"),
 loader;
 
+argv.c = argv.c.replace("~", process.env.HOME);
 
-function getConfig(options) {
-	if(!options) options = process.env.ProgramData ? [process.env.ProgramData, "\\maestro\\config"].join("") : "~/.maestro/config";
-	return typeof options == "object" ? options : require(options.replace("~", process.env.HOME));
-}
 
-var c = getConfig(argv.c);
+
+var c = require(argv.c);
 c.type = argv.t;
+c.configPath = argv.c;
 
 if(argv.t == "server") {
 	loader = maestro.server(c);
@@ -32,3 +33,9 @@ if(argv.s) loader.require(argv.s);
 
 
 loader.load();
+
+
+if(argv.t == "server") {
+	celeri.onJs(loader.module("cli"));
+	celeri.open();
+}
