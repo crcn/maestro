@@ -37,6 +37,7 @@
     "forever-monitor": "1.1.x",
     "freeport": "1.0.x",
     "http-proxy": "0.8.x",
-    "celeri": "0.3.x"
+    "celeri": "0.3.x",
+    "gumbo": "0.2.x"
   }
 }
