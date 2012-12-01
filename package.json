@@ -33,7 +33,7 @@
     "plugin": "0.2.x",
     "request": "2.12.x",
     "dref": "0.0.x",
-    "plugin-express": "0.0.x",
+    "plugin-express": "0.1.x",
     "forever-monitor": "1.1.x",
     "freeport": "1.0.x",
     "http-proxy": "0.8.x",
