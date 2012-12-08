@@ -1,6 +1,6 @@
 {
   "name": "maestro",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Maestro is a cloud management tool with a mongodb-like feel",
   "main": "./lib/index.js",
   "scripts": {
@@ -18,27 +18,15 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "async": "0.1.x",
-    "outcome": "0.0.x",
-    "sift": "0.0.x",
     "sprintf": "0.1.x",
-    "step": "0.0.x",
     "structr": "0.2.x",
-    "underscore": "1.4.x",
-    "aws-lib": "0.1.x",
-    "fiddle": "0.0.x",
-    "optimist": "0.3.x",
     "structr-step": "0.0.x",
-    "dnode": "1.0.x",
-    "seq": "0.3.x",
+    "outcome": "0.0.x",
+    "fiddle": "0.0.x",
     "plugin": "0.2.x",
-    "request": "2.12.x",
-    "dref": "0.0.x",
     "plugin-express": "0.1.x",
-    "forever-monitor": "1.1.x",
-    "freeport": "1.0.x",
-    "http-proxy": "0.8.x",
-    "celeri": "0.3.x",
+    "pkgcloud": "0.5.x",
     "gumbo": "0.2.x",
-    "pkgcloud": "0.5.x"
+    "celeri": "0.3.x"
   }
 }
