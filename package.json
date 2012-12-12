@@ -1,6 +1,6 @@
 {
   "name": "maestro",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Maestro is a cloud management tool with a mongodb-like feel",
   "main": "./lib/index.js",
   "scripts": {
@@ -39,6 +39,6 @@
     "http-proxy": "0.8.x",
     "celeri": "0.3.x",
     "gumbo": "0.2.x",
-    "pkgcloud": "0.5.x"
+    "pkgcloud": "git+https://crcn@github.com/browsertap/pkgcloud.git"
   }
 }
